@@ -16,5 +16,4 @@ compile_commands.json
 *.a
 *.lib
 *.so
-.vscode
-project
+!project/bin/*.so
