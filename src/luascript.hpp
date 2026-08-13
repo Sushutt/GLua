@@ -1,6 +1,7 @@
 #pragma once
 
 #include "godot_cpp/variant/string.hpp"
+#include "sol/sol.hpp"
 #include <godot_cpp/classes/node.hpp>
 
 namespace godot {
@@ -9,7 +10,8 @@ namespace godot {
         GDCLASS(LuaScript, Node)
 
         private:
-            String luacode;
+            String lua_code;
+            sol::state lua_state;
 
         protected:
             static void _bind_methods();
@@ -20,9 +22,10 @@ namespace godot {
 
             void run();
 
-            void set_luacode(const String p_luacode);
-            String get_luacode() const;
+            void set_lua_code(const String p_lua_code);
+            String get_lua_code() const;
 
+            void create_lua_state();
 
         void _ready() override;
     };

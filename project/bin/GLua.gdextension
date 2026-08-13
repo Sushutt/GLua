@@ -1,0 +1,20 @@
+[configuration]
+
+entry_symbol = "glua_library_init"
+compatibility_minimum = "4.5"
+reloadable = true
+
+[libraries]
+
+macos.debug = "./libglua.macos.template_debug.double.dylib"
+macos.release = "./libglua.macos.template_release.double.dylib"
+windows.debug.x86_32 = "./glua.windows.template_debug.double.x86_32.dll"
+windows.release.x86_32 = "./glua.windows.template_release.double.x86_32.dll"
+windows.debug.x86_64 = "./glua.windows.template_debug.double.x86_64.dll"
+windows.release.x86_64 = "./glua.windows.template_release.double.x86_64.dll"
+linux.debug.x86_64 = "./libglua.linux.template_debug.double.x86_64.so"
+linux.release.x86_64 = "./libglua.linux.template_release.double.x86_64.so"
+linux.debug.arm64 = "./libglua.linux.template_debug.double.arm64.so"
+linux.release.arm64 = "./libglua.linux.template_release.double.arm64.so"
+linux.debug.rv64 = "./libglua.linux.template_debug.double.rv64.so"
+linux.release.rv64 = "./libglua.linux.template_release.double.rv64.so"

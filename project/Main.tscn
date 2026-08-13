@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d4bin5c836oyq"]
+
+[ext_resource type="Script" uid="uid://cqmfevwey85q8" path="res://runlua.gd" id="1_glv2v"]
+
+[node name="Node3D" type="Node3D" unique_id=635812420]
+
+[node name="LuaScript" type="LuaScript" parent="." unique_id=2016717087]
+lua_code = "for i = 1,10 do
+	log(i)
+end"
+script = ExtResource("1_glv2v")

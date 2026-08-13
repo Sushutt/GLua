@@ -10,11 +10,24 @@ config_version=5
 
 [application]
 
-config/name="Demo"
-run/main_scene="uid://6n3mcis2r7bg"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/name="GLuaDemo"
+run/main_scene="uid://d4bin5c836oyq"
+config/features=PackedStringArray("4.7", "Double Precision", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
-project/assembly_name="Demo"
+project/assembly_name="GLuaDemo"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
