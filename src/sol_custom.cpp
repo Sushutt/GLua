@@ -10,6 +10,7 @@ godot::Variant sol_lua_get(sol::types<godot::Variant>, lua_State* L, int index, 
 	sol::type type = sol::type_of(L, absolute_index);
     
 	// Find the type
+	// TODO: Add more 
 	switch (type) {
 		case sol::type::string:
 			return godot::Variant(sol::stack::get<std::string>(L, absolute_index ).c_str());
