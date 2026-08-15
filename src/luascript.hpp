@@ -1,5 +1,6 @@
 #pragma once
 
+#include "godot_cpp/variant/callable.hpp"
 #include "godot_cpp/variant/string.hpp"
 #include "sol/sol.hpp"
 #include <godot_cpp/classes/node.hpp>
@@ -20,12 +21,12 @@ namespace godot {
             LuaScript();
             ~LuaScript();
 
+            void add_callable(Callable);
+            void create_lua_state();
             void run();
 
             void set_lua_code(const String p_lua_code);
             String get_lua_code() const;
-
-            void create_lua_state();
 
         void _ready() override;
     };

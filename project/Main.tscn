@@ -5,8 +5,5 @@
 [node name="Node3D" type="Node3D" unique_id=635812420]
 
 [node name="LuaScript" type="LuaScript" parent="." unique_id=2016717087]
-lua_code = "for i = 1,1000 do
-	log(math.random(0,i))
-end
-"
+lua_code = "dummy(asd)"
 script = ExtResource("1_glv2v")
