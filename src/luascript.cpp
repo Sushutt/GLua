@@ -1,11 +1,18 @@
 #include "luascript.hpp"
+
 #include "godot_cpp/classes/global_constants.hpp"
 #include "godot_cpp/core/print_string.hpp"
+#include "godot_cpp/variant/callable.hpp"
 #include "godot_cpp/variant/string.hpp"
 #include "godot_cpp/variant/variant.hpp"
 #include <godot_cpp/core/class_db.hpp>
-#include <string>
+
 #include <sol_custom.hpp>
+
+#include <string>
+
+#include "callable_binding.hpp"
+#include "sol/sol.hpp"
 
 using namespace godot;
 
@@ -48,9 +55,12 @@ void dummy(Variant variant)
 */
 void LuaScript::add_callable(Callable callable)
 {
-	lua_state.set_function(
-		((String)callable.get_method()).utf8().get_data(),
-		[callable] () {callable.call(callable.get_bound_arguments());});
+	//godot::print_line(callable.get_bound_arguments());
+	//lua_state.set_function(
+	//	((String)callable.get_method()).utf8().get_data(),
+	//	[callable] (Variant v) {callable.call(v);});
+
+	lua_state[((String)callable.get_method()).utf8().get_data()] = CallableBinding(callable);
 }
 
 void LuaScript::create_lua_state()
@@ -63,6 +73,11 @@ void LuaScript::create_lua_state()
 		// Safely takes any Lua type and prints it natively as a Godot Variant
 		godot::UtilityFunctions::print(v); 
 	});
+
+	// OUR OWN "callable" proxy
+	lua_state.new_usertype<CallableBinding>("Callable",
+		"Call", &CallableBinding::Call);
+
 	// Just expose most libraries to each script
 	lua_state.open_libraries(sol::lib::base, sol::lib::math);
 }

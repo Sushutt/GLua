@@ -5,5 +5,6 @@
 [node name="Node3D" type="Node3D" unique_id=635812420]
 
 [node name="LuaScript" type="LuaScript" parent="." unique_id=2016717087]
-lua_code = "dummy(asd)"
+lua_code = "piss:Call(1, 2)
+piss:Call(\"hello.... \", \"neighbour\")"
 script = ExtResource("1_glv2v")

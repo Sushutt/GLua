@@ -7,4 +7,5 @@ This project is purpose-built for modding in my own games. You are free to use t
 
 ## Features
 - An easy to set up "LuaScript" node
-- (WORK IN PROGRESS) Interoperability with Callables and (some) Variants
+- Interoperability with Callables and (some) Variants
+- Catastrophically bad codebase

@@ -1,10 +1,9 @@
 extends LuaScript
 
-func piss(arg):
-	print(arg)
+func piss(var0, var1):
+	print(var0 + var1)
 
 func _ready() -> void:
-	#print(Callable(self, "piss").get_method())
 	create_lua_state()
-	#add_callable(Callable(self, "piss"))
+	add_callable(Callable(self, "piss"))
 	run()

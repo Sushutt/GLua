@@ -16,6 +16,7 @@ env.Append(CPPPATH=["include/"])
 env.Append(LIBS=["lua5.4"])
 
 # Collects all .cpp files in the 'src' folder as compile targets.
+# Also some subfolders !
 sources = Glob("src/*.cpp")
 
 # The filename for the dynamic library for this GDExtension.
