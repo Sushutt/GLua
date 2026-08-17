@@ -1,7 +1,11 @@
 extends LuaScript
 
-func piss(var0, var1):
-	print(var0 + var1)
+func piss(x, y, z):
+	print("mesh added");
+	var mesh = MeshInstance3D.new();
+	add_child(mesh);
+	mesh.mesh = BoxMesh.new();
+	mesh.position = Vector3(x,y,z);
 
 func _ready() -> void:
 	create_lua_state()

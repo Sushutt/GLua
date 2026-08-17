@@ -12,7 +12,7 @@
 #include <string>
 
 #include "callable_binding.hpp"
-#include "sol/sol.hpp"
+#include "node_binding.hpp"
 
 using namespace godot;
 
@@ -35,7 +35,7 @@ LuaScript::~LuaScript() {
 }
 
 void LuaScript::_ready() {
-	godot::print_line("hiiiiiiii :3");
+	//godot::print_line(get_name());
 }
 
 // Little functions
@@ -43,11 +43,6 @@ void print(std::string content)
 {
 	String godot_string(content.c_str());
 	godot::print_line(godot_string);
-}
-
-void dummy(Variant variant)
-{
-	godot::print_line(variant);
 }
 
 /*
@@ -68,15 +63,16 @@ void LuaScript::create_lua_state()
 	lua_state = sol::state();
 	// Add built-in functions
 	lua_state.set_function("log", print);
-	lua_state.set_function("dummy", dummy);
-	lua_state.set_function("print_variant", [](const godot::Variant& v) {
-		// Safely takes any Lua type and prints it natively as a Godot Variant
-		godot::UtilityFunctions::print(v); 
-	});
 
 	// OUR OWN "callable" proxy
 	lua_state.new_usertype<CallableBinding>("Callable",
 		"Call", &CallableBinding::Call);
+
+	lua_state.new_usertype<NodeBinding>("Node",
+		"GetName", &NodeBinding::GetName);
+	
+	// Create a reference to the script node
+	lua_state["Self"] = NodeBinding(this);
 
 	// Just expose most libraries to each script
 	lua_state.open_libraries(sol::lib::base, sol::lib::math);
